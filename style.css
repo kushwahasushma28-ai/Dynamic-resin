@@ -1,0 +1,505 @@
+/* --- Global Reset & Foundation --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #4a4a4a;
+    background-color: #fdfdfd; /* Clean off-white background */
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+/* Color Palette */
+:root {
+    --primary-red: #a81c1c; /* Rich Crimson Rose */
+    --gold: #d4ac0d; /* Premium Gold Filigree */
+    --gold-hover: #b9930b;
+    --light-cream: #f9f7f0;
+    --dark-wood: #5d4037; /* Clean, polished walnut look */
+    --black: #1a1a1a;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--black);
+    font-weight: 700;
+}
+
+p {
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+/* Layout Utilities */
+.flex-row { display: flex; flex-direction: row; flex-wrap: wrap; }
+.flex-column { display: flex; flex-direction: column; }
+.j-space-between { justify-content: space-between; }
+.j-center { justify-content: center; }
+.j-start { justify-content: flex-start; }
+.a-center { align-items: center; }
+.text-center { text-align: center; }
+
+/* Sections */
+.section {
+    padding: 100px 0;
+}
+
+.section-title {
+    font-size: 2.8rem;
+    margin-bottom: 60px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60%;
+    height: 3px;
+    background-color: var(--gold);
+    margin: 15px auto 0;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--black);
+    color: #fff;
+    border: 1px solid var(--black);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--black);
+}
+
+/* --- Header & Navigation --- */
+header {
+    background-color: #fff;
+    padding: 20px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-red);
+}
+
+.nav-links li {
+    list-style: none;
+    margin-left: 30px;
+}
+
+.nav-links a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--black);
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--gold);
+}
+
+.mobile-menu-toggle {
+    display: none;
+    cursor: pointer;
+}
+
+.mobile-menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--black);
+    margin-bottom: 5px;
+}
+
+/* --- Home (Hero Section) --- */
+.hero {
+    min-height: 100vh;
+    padding-top: 100px;
+    position: relative;
+    background-color: var(--light-cream);
+    overflow: hidden;
+}
+
+/* Subtle corner floral decorations to clean it up */
+.hero::before, .hero::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+    z-index: 1;
+}
+
+.hero::before {
+    top: 100px;
+    left: 20px;
+    background-image: url('https://via.placeholder.com/300.png?text=Top+Left+Floral');
+}
+
+.hero::after {
+    bottom: 20px;
+    right: 20px;
+    background-image: url('https://via.placeholder.com/300.png?text=Bottom+Right+Floral');
+}
+
+.wood-plaque-container {
+    margin-bottom: 40px;
+}
+
+.wood-plaque {
+    background-color: var(--dark-wood);
+    border: 5px solid var(--gold);
+    border-radius: 8px;
+    padding: 60px;
+    display: inline-block;
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 10;
+}
+
+/* Clean, simplified filigree from reference */
+.filigree {
+    width: 100px;
+    height: 30px;
+    background-image: url('https://via.placeholder.com/100x30.png?text=Gold+Filigree+Pattern');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+}
+
+.top-filigree {
+    margin-bottom: 20px;
+}
+
+.bottom-filigree {
+    margin-top: 20px;
+}
+
+.wood-plaque h1 {
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 10px;
+}
+
+.wood-plaque .subtitle {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.wood-plaque h2 {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.wood-plaque .cta-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.gold-hr {
+    border: 0;
+    height: 2px;
+    background-color: var(--gold);
+    width: 60%;
+    margin: 10px auto;
+}
+
+.wood-plaque .categories {
+    gap: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--gold);
+}
+
+.resin-drip {
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 70px;
+    background-image: url('https://via.placeholder.com/60x70.png?text=Resin+Drip');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* --- Services Section --- */
+.services-grid {
+    gap: 30px;
+}
+
+.service-card {
+    flex: 0 0 calc(33.33% - 20px);
+    background-color: #fff;
+    padding: 50px 30px;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.service-icon {
+    font-size: 3rem;
+    color: var(--gold);
+    margin-bottom: 30px;
+}
+
+.service-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+}
+
+.service-card p {
+    color: #7a7a7a;
+    font-size: 0.95rem;
+}
+
+/* --- Gallery Section --- */
+.gallery-filters {
+    margin-bottom: 50px;
+    gap: 15px;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 1px solid var(--black);
+    color: var(--black);
+    padding: 10px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background-color: var(--black);
+    color: #fff;
+}
+
+.gallery-grid {
+    gap: 20px;
+}
+
+.gallery-item {
+    flex: 0 0 calc(33.33% - 14px);
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.gallery-img-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-item .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .overlay {
+    opacity: 1;
+}
+
+.gallery-item .overlay span {
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+/* --- Order Section --- */
+#order {
+    background-color: var(--light-cream);
+}
+
+.order-desc {
+    max-width: 600px;
+    margin: 0 auto 50px;
+}
+
+.whatsapp-order-btn {
+    background-color: var(--black);
+    color: #fff;
+    padding: 20px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    gap: 15px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.whatsapp-order-btn:hover {
+    background-color: var(--primary-red);
+    transform: translateY(-3px);
+}
+
+.wa-icon {
+    font-size: 2rem;
+}
+
+/* --- Contact Section --- */
+.contact-flex {
+    gap: 60px;
+}
+
+.contact-info {
+    flex: 0 0 40%;
+}
+
+.contact-info h3 {
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+}
+
+.contact-form-container {
+    flex: 0 0 50%;
+}
+
+.contact-form {
+    gap: 20px;
+}
+
+.contact-form input, .contact-form textarea {
+    padding: 15px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 4px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+}
+
+.contact-form button {
+    margin-top: 10px;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--black);
+    padding: 50px 0;
+    color: rgba(255,255,255,0.7);
+}
+
+.copyright {
+    margin-bottom: 20px;
+}
+
+.footer-social-links {
+    gap: 20px;
+}
+
+.footer-social-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-social-links a:hover {
+    color: var(--gold);
+}
+
+/* --- Responsive Layout --- */
+@media (max-width: 992px) {
+    .nav-links li { margin-left: 20px; }
+    .wood-plaque h2 { font-size: 2rem; }
+}
+
+@media (max-width: 768px) {
+    header .container { position: relative; }
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        flex-direction: column;
+        padding: 20px 0;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+    }
+
+    .nav-links.active { display: flex; }
+    .nav-links li { margin: 10px 0; }
+    .mobile-menu-toggle { display: block; }
+    .service-card { flex: 0 0 100%; }
+    .gallery-item { flex: 0 0 calc(50% - 10px); }
+    .hero h1 { font-size: 1.8rem; }
+    .hero p { font-size: 1rem; }
+    .wood-plaque { padding: 40px; }
+    .contact-flex { flex-direction: column; gap: 40px;}
+    .contact-info, .contact-form-container { flex: 0 0 100%; }
+}
+
+@media (max-width: 480px) {
+    .gallery-item { flex: 0 0 100%; }
+    }
