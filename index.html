@@ -1,20 +1,33 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[Your Client's Brand Name] | Premium Resin Art</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>[Your Client's Brand] | Enchanted Floral Resin Art</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div class="cursor-dot" data-cursor></div>
     <div class="cursor-outline" data-cursor></div>
 
+    <a href="https://wa.me/1234567890?text=Hello!%20I%20would%20like%20to%20order%20an%20enchanted%20resin%20piece." target="_blank" class="floating-cta">
+        <span class="cta-text-mobile">Order on WhatsApp</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+    </a>
+
     <nav id="navbar">
-        <div class="logo">[Brand Logo]</div>
+        <div class="logo">
+            <span class="logo-icon">✿</span> [Brand]
+        </div>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#services">Services</a></li>
@@ -24,28 +37,35 @@
     </nav>
 
     <section id="home" class="hero">
+        <div class="hero-bg"></div>
         <div class="hero-content fade-in">
-            <h1>Botanical <br>Elegance</h1>
-            <p>Preserving nature's most delicate moments in eternal resin.</p>
-            <a href="#gallery" class="btn">Explore the Magic</a>
+            <h1>Eternal <br><span>Botanica</span></h1>
+            <p>Step into a world where nature's delicate magic is captured forever in crystal-clear resin, touched by moonlight and old-world elegance.</p>
+            <div class="hero-actions">
+                <a href="#gallery" class="btn secondary">View the Collection</a>
+                <a href="https://wa.me/1234567890" target="_blank" class="btn primary">Commission an Original</a>
+            </div>
         </div>
     </section>
 
-    <section id="services" class="section-padding">
+    <section id="services" class="section-padding illustrated-bg">
         <div class="container">
             <h2 class="section-title fade-in">Bespoke <span>Services</span></h2>
             <div class="services-grid">
                 <div class="service-card fade-in">
-                    <h3>Bridal Bouquets</h3>
-                    <p>[Replace text: We encapsulate the magic of your wedding day by preserving your actual bouquet in a flawless resin block.]</p>
+                    <div class="card-icon">🌹</div>
+                    <h3>Bridal Memories</h3>
+                    <p>Preservation of your wedding bouquet in a seamless resin block, capturing your special day forever.</p>
                 </div>
                 <div class="service-card fade-in">
-                    <h3>Heirloom Jewelry</h3>
-                    <p>[Replace text: Delicate, wearable art featuring hand-picked wildflowers and gold flakes cast in crystal-clear pendants.]</p>
+                    <div class="card-icon">💍</div>
+                    <h3>Wearable Magic</h3>
+                    <p>Custom illustrated botanical jewelry with genuine gold accents and dark rose petals.</p>
                 </div>
                 <div class="service-card fade-in">
-                    <h3>Luxury Homeware</h3>
-                    <p>[Replace text: Elevate your dining experience with custom floral coasters, serving trays, and artistic statement pieces.]</p>
+                    <div class="card-icon">✨</div>
+                    <h3>Heirloom Decor</h3>
+                    <p>Statement homeware inspired by classic fae folklore to elevate your living space.</p>
                 </div>
             </div>
         </div>
@@ -53,28 +73,26 @@
 
     <section id="gallery" class="section-padding alternate-bg">
         <div class="container">
-            <h2 class="section-title fade-in">The <span>Enchanted</span> Gallery</h2>
+            <h2 class="section-title fade-in">The <span>Whispering</span> Gallery</h2>
             <div class="gallery-grid">
-                <div class="gallery-item fade-in"><img src="https://images.unsplash.com/photo-1572085313466-6710de8d7ba3?q=80&w=800&auto=format&fit=crop" alt="Resin Art"></div>
-                <div class="gallery-item fade-in"><img src="https://images.unsplash.com/photo-1602491453631-e2a5ad90a131?q=80&w=800&auto=format&fit=crop" alt="Resin Art"></div>
-                <div class="gallery-item fade-in"><img src="https://images.unsplash.com/photo-1507646871313-14631ce55eb5?q=80&w=800&auto=format&fit=crop" alt="Resin Art"></div>
-                <div class="gallery-item fade-in"><img src="https://images.unsplash.com/photo-1500043139886-2187317730e2?q=80&w=800&auto=format&fit=crop" alt="Resin Art"></div>
-                <div class="gallery-item fade-in"><img src="https://images.unsplash.com/photo-1460500063983-994d4c27756c?q=80&w=800&auto=format&fit=crop" alt="Resin Art"></div>
-                <div class="gallery-item fade-in"><img src="https://images.unsplash.com/photo-1490750967868-88cb4ecb07cb?q=80&w=800&auto=format&fit=crop" alt="Resin Art"></div>
+                <div class="gallery-item fade-in"><img src="https://images.unsplash.com/photo-1572085313466-6710de8d7ba3?q=80&w=800" alt="Resin Art"></div>
+                <div class="gallery-item fade-in"><img src="https://images.unsplash.com/photo-1602491453631-e2a5ad90a131?q=80&w=800" alt="Resin Art"></div>
+                <div class="gallery-item fade-in"><img src="https://images.unsplash.com/photo-1507646871313-14631ce55eb5?q=80&w=800" alt="Resin Art"></div>
+                <div class="gallery-item fade-in"><img src="https://images.unsplash.com/photo-1500043139886-2187317730e2?q=80&w=800" alt="Resin Art"></div>
+                <div class="gallery-item fade-in"><img src="https://images.unsplash.com/photo-1460500063983-994d4c27756c?q=80&w=800" alt="Resin Art"></div>
+                <div class="gallery-item fade-in"><img src="https://images.unsplash.com/photo-1490750967868-88cb4ecb07cb?q=80&w=800" alt="Resin Art"></div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="section-padding cta-section">
+    <section id="contact" class="section-padding cta-section illustrated-bg dark">
         <div class="container fade-in">
-            <h2 class="section-title">Commission an <span>Original</span></h2>
-            <p class="cta-text">Each piece is a unique dialogue between nature and artistry. To request a custom commission or inquire about available pieces, please reach out directly.</p>
+            <h2 class="section-title">Begin Your <span>Faerie Tale</span></h2>
+            <p class="cta-text">Each piece is crafted as a dialogue between art and ancient nature. Commission your own unique piece today.</p>
             
             <div class="contact-actions">
-                <a href="https://wa.me/1234567890?text=Hello!%20I%20would%20like%20to%20inquire%20about%20a%20custom%20resin%20piece." target="_blank" class="btn whatsapp-btn">
-                    Inquire via WhatsApp
-                </a>
-                <a href="mailto:contact@yourbrand.com" class="btn">Send an Email</a>
+                <a href="https://wa.me/1234567890" target="_blank" class="btn primary">Start Your Order</a>
+                <a href="mailto:contact@yourbrand.com" class="btn secondary">Send an Email</a>
             </div>
         </div>
     </section>
@@ -91,7 +109,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 [Your Client's Brand Name]. All rights reserved. | Developed by Sauhard Kushwaha.</p>
+            <p>&copy; 2026 [Your Client's Brand]. All rights reserved.</p>
         </div>
     </footer>
 
