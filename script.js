@@ -1,83 +1,80 @@
-// Function for smooth scrolling
-function initSmoothScroll() {
-    const scrollLinks = document.querySelectorAll('a[href^="#"]');
+// --- Configuration ---
+// Replace this with your actual WhatsApp Number
+// Format: CountryCode + Number (No + sign or spaces) e.g., 1234567890
+const WHATSAPP_NUMBER = "1234567890"; 
 
-    scrollLinks.forEach(link => {
-        link.addEventListener('click', e => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href');
-            if (targetId === '#') return; // Do nothing if it's just '#'
+// --- Mobile Menu Logic ---
+document.addEventListener('DOMContentLoaded', () => {
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+    const mobileNav = document.getElementById('mobile-nav');
+    const navLinks = mobileNav.querySelectorAll('a');
 
-            const targetElement = document.querySelector(targetId);
+    // Open Menu
+    menuIcon.addEventListener('click', () => {
+        mobileNav.classList.add('active');
+    });
 
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
+    // Close Menu
+    closeIcon.addEventListener('click', () => {
+        mobileNav.classList.remove('active');
+    });
+
+    // Close Menu when a link is clicked
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
         });
     });
-}
 
-// Function for Mobile Menu Toggle
-function initMobileMenu() {
-    const mobileToggle = document.querySelector('.mobile-menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
+    // --- Form Submission Logic ---
+    const orderForm = document.getElementById('orderForm');
+    
+    orderForm.addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent page reload
+        
+        const name = document.getElementById('name').value;
+        const contact = document.getElementById('contact').value;
+        const product = document.getElementById('product').value;
+        const message = document.getElementById('message').value;
 
-    if (mobileToggle) {
-        mobileToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-    }
-}
+        // Construct the WhatsApp message
+        let waMessage = `*New Inquiry from Petal & Resin Website*%0A%0A`;
+        waMessage += `*Name:* ${name}%0A`;
+        waMessage += `*Contact:* ${contact}%0A`;
+        
+        if(product) {
+            waMessage += `*Product Interested In:* ${product}%0A`;
+        }
+        if(message) {
+            waMessage += `*Message:* ${message}%0A`;
+        }
 
-// Function for Gallery Filtering
-function initGalleryFilter() {
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const galleryItems = document.querySelectorAll('.gallery-item');
-
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Remove active class from all buttons
-            filterBtns.forEach(b => b.classList.remove('active'));
-            // Add active class to clicked button
-            btn.classList.add('active');
-
-            const filterValue = btn.getAttribute('data-filter');
-
-            galleryItems.forEach(item => {
-                if (filterValue === 'all' || item.classList.contains(filterValue)) {
-                    item.style.display = 'block';
-                    setTimeout(() => {
-                        item.style.opacity = '1';
-                    }, 50);
-                } else {
-                    item.style.opacity = '0';
-                    setTimeout(() => {
-                        item.style.display = 'none';
-                    }, 300);
-                }
-            });
-        });
+        const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${waMessage}`;
+        window.open(whatsappUrl, '_blank');
     });
-}
-
-// Function for Dynamic WhatsApp Ordering Link
-function initWhatsAppOrder() {
-    const whatsappLink = document.getElementById('whatsapp-order-link');
-    // Replace with actual phone number and customized message
-    const phoneNumber = '+1234567890'; // e.g., '+15551234567'
-    const message = encodeURIComponent("Hello! I'm interested in ordering a custom botanical resin piece.");
-
-    if (whatsappLink) {
-        whatsappLink.href = `https://wa.me/${phoneNumber}?text=${message}`;
-    }
-}
-
-// Ensure all functions run after the page loads
-window.addEventListener('DOMContentLoaded', () => {
-    initSmoothScroll();
-    initMobileMenu();
-    initGalleryFilter();
-    initWhatsAppOrder();
 });
+
+// --- Function to auto-fill product in order form and scroll to it ---
+// This is called when an "INQUIRE" button in the gallery is clicked
+function selectProduct(productName) {
+    // 1. Fill the input field
+    const productInput = document.getElementById('product');
+    productInput.value = productName;
+    
+    // 2. Add a little visual cue (optional)
+    productInput.style.backgroundColor = "#e8f9ef"; // Light green flash
+    setTimeout(() => {
+        productInput.style.backgroundColor = "#f9f9f9"; // Back to normal
+    }, 1000);
+
+    // 3. Scroll down to the order section smoothly
+    document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
+}
+
+// --- Generic WhatsApp direct link for the simple buttons ---
+function directWhatsApp() {
+    const defaultMessage = "Hello Petal & Resin, I would like to inquire about your handcrafted art.";
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(defaultMessage)}`;
+    window.open(whatsappUrl, '_blank');
+}
