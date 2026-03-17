@@ -47,6 +47,7 @@
         <div class="diamond small"></div><div class="line"></div><div class="diamond large"></div><div class="line"></div><div class="diamond small"></div>
     </div>
 
+    
     <section id="gallery" class="collection-section fade-in-section">
         <p class="section-subtitle">Explore</p>
         <h2 class="section-title">Our Collection</h2>
@@ -82,6 +83,12 @@
                 </div>
             </div>
             <button class="carousel-control next" onclick="moveSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <button class="btn btn-primary" onclick="openLightbox(0)">
+                <i class="fa-solid fa-expand" style="margin-right: 8px;"></i> View Full Gallery
+            </button>
         </div>
     </section>
 
@@ -146,6 +153,14 @@
             <p>&copy; 2026 Petal & Resin. All rights reserved.</p>
         </div>
     </footer>
+
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <button class="lightbox-prev" onclick="changeLightboxImage(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+        <img id="lightbox-img" class="lightbox-content" src="">
+        <div id="lightbox-caption"></div>
+        <button class="lightbox-next" onclick="changeLightboxImage(1)"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
 
     <script src="script.js"></script>
 </body>
