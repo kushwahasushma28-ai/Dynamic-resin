@@ -1,6 +1,10 @@
 // PUT YOUR REAL WHATSAPP NUMBER HERE (Country Code + Number, no + or spaces)
 const WHATSAPP_NUMBER = "1234567890"; 
 
+// --- Auto-Play Timer Variables ---
+let currentSlideIndex = 0;
+let autoPlayTimer; 
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- 1. Mobile Menu Logic ---
@@ -17,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 2. Header Opacity/Blur on Scroll ---
     const header = document.getElementById('main-header');
     window.addEventListener('scroll', () => {
-        // When scrolled more than 10 pixels down, add the blurred/opacity effect
         if (window.scrollY > 10) {
             header.classList.add('scrolled');
         } else {
@@ -25,13 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- 3. Scroll Animations (Fade Up, Slide Left, Slide Right) ---
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.15 
-    };
-
+    // --- 3. Scroll Animations ---
+    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -41,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // Tell the observer to watch all our animated sections
     document.querySelectorAll('.fade-in-section, .slide-in-left, .slide-in-right').forEach(section => {
         observer.observe(section);
     });
@@ -61,17 +58,44 @@ document.addEventListener('DOMContentLoaded', () => {
         window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${waMessage}`, '_blank');
     });
 
-    // --- 5. Auto-Play Slider ---
-    setInterval(() => {
-        moveSlide(1); 
-    }, 3000); 
-
+    // --- 5. Auto-Play Slider with Hover/Touch Pause ---
+    const carouselContainer = document.getElementById('carouselContainer');
+    
+    // Start sliding initially
+    startAutoPlay();
     updateCarousel();
     window.addEventListener('resize', updateCarousel);
+
+    // Pause when mouse enters or finger touches
+    carouselContainer.addEventListener('mouseenter', stopAutoPlay);
+    carouselContainer.addEventListener('touchstart', stopAutoPlay);
+
+    // Resume when mouse leaves or finger is removed
+    carouselContainer.addEventListener('mouseleave', startAutoPlay);
+    carouselContainer.addEventListener('touchend', startAutoPlay);
+
+    // --- 6. Make Gallery Images Clickable for Lightbox ---
+    const cards = document.querySelectorAll('.card');
+    cards.forEach((card, index) => {
+        const img = card.querySelector('img');
+        img.addEventListener('click', () => {
+            openLightbox(index);
+        });
+    });
 });
 
-// --- Image Slider (Carousel) Functions ---
-let currentSlideIndex = 0;
+// --- Image Slider Functions ---
+function startAutoPlay() {
+    // Clear any existing timer first to prevent duplicates
+    stopAutoPlay();
+    autoPlayTimer = setInterval(() => {
+        moveSlide(1); 
+    }, 3000); // Slides every 3 seconds
+}
+
+function stopAutoPlay() {
+    clearInterval(autoPlayTimer);
+}
 
 function moveSlide(direction) {
     const cards = document.querySelectorAll('.card');
@@ -87,7 +111,6 @@ function moveSlide(direction) {
     } else if (currentSlideIndex < 0) {
         currentSlideIndex = maxIndex; 
     }
-
     updateCarousel();
 }
 
@@ -100,20 +123,60 @@ function updateCarousel() {
     track.style.transform = `translateX(-${currentSlideIndex * cardWidth}px)`;
 }
 
+// --- FULLSCREEN LIGHTBOX FUNCTIONS ---
+let currentLightboxIndex = 0;
+
+function openLightbox(index) {
+    stopAutoPlay(); // Pause the background slider
+    currentLightboxIndex = index;
+    
+    const cardsList = document.querySelectorAll('.card');
+    if(cardsList.length === 0) return;
+    
+    const targetCard = cardsList[currentLightboxIndex];
+    const imgSrc = targetCard.querySelector('img').src;
+    const imgAlt = targetCard.querySelector('img').alt;
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+
+    lightbox.style.display = "block";
+    lightboxImg.src = imgSrc;
+    lightboxCaption.innerHTML = imgAlt;
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox').style.display = "none";
+    startAutoPlay(); // Resume the background slider when closed
+}
+
+function changeLightboxImage(direction) {
+    const cardsList = document.querySelectorAll('.card');
+    currentLightboxIndex += direction;
+    
+    // Loop around the lightbox images
+    if (currentLightboxIndex >= cardsList.length) {
+        currentLightboxIndex = 0;
+    } else if (currentLightboxIndex < 0) {
+        currentLightboxIndex = cardsList.length - 1;
+    }
+    
+    const targetCard = cardsList[currentLightboxIndex];
+    document.getElementById('lightbox-img').src = targetCard.querySelector('img').src;
+    document.getElementById('lightbox-caption').innerHTML = targetCard.querySelector('img').alt;
+}
+
 // --- Form Pre-fill & Scroll ---
 function selectProduct(productName) {
     const productInput = document.getElementById('product');
     productInput.value = productName;
-    
     productInput.style.backgroundColor = "#fae8ea"; 
-    setTimeout(() => {
-        productInput.style.backgroundColor = "#fcfcfc"; 
-    }, 1000);
-
+    setTimeout(() => { productInput.style.backgroundColor = "#fcfcfc"; }, 1000);
     document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
 }
 
 function directWhatsApp() {
     const defaultMessage = "Hello Petal & Resin, I would like to inquire about your handcrafted art.";
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(defaultMessage)}`, '_blank');
-}
+        }
