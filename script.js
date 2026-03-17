@@ -14,21 +14,22 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', () => mobileNav.classList.remove('active'));
     });
 
-    // --- 2. Frosted Glass Header on Scroll ---
+    // --- 2. Header Opacity/Blur on Scroll ---
     const header = document.getElementById('main-header');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
+        // When scrolled more than 10 pixels down, add the blurred/opacity effect
+        if (window.scrollY > 10) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
     });
 
-    // --- 3. Scroll Fade-In Animations ---
+    // --- 3. Scroll Animations (Fade Up, Slide Left, Slide Right) ---
     const observerOptions = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.15 // Animates when 15% visible
+        threshold: 0.15 
     };
 
     const observer = new IntersectionObserver((entries, observer) => {
@@ -40,7 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    document.querySelectorAll('.fade-in-section').forEach(section => {
+    // Tell the observer to watch all our animated sections
+    document.querySelectorAll('.fade-in-section, .slide-in-left, .slide-in-right').forEach(section => {
         observer.observe(section);
     });
 
@@ -60,12 +62,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- 5. Auto-Play Slider ---
-    // Start sliding every 3 seconds
     setInterval(() => {
         moveSlide(1); 
     }, 3000); 
 
-    // Initial calculation and screen resize handling
     updateCarousel();
     window.addEventListener('resize', updateCarousel);
 });
@@ -83,9 +83,9 @@ function moveSlide(direction) {
     currentSlideIndex += direction;
 
     if (currentSlideIndex > maxIndex) {
-        currentSlideIndex = 0; // Loop to start
+        currentSlideIndex = 0; 
     } else if (currentSlideIndex < 0) {
-        currentSlideIndex = maxIndex; // Loop to end
+        currentSlideIndex = maxIndex; 
     }
 
     updateCarousel();
@@ -105,7 +105,7 @@ function selectProduct(productName) {
     const productInput = document.getElementById('product');
     productInput.value = productName;
     
-    productInput.style.backgroundColor = "#fae8ea"; // Soft rose flash
+    productInput.style.backgroundColor = "#fae8ea"; 
     setTimeout(() => {
         productInput.style.backgroundColor = "#fcfcfc"; 
     }, 1000);
