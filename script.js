@@ -1,7 +1,6 @@
 // PUT YOUR REAL WHATSAPP NUMBER HERE (Country Code + Number, no + or spaces)
 const WHATSAPP_NUMBER = "1234567890"; 
 
-// --- Auto-Play Timer Variables ---
 let currentSlideIndex = 0;
 let autoPlayTimer; 
 
@@ -61,36 +60,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 5. Auto-Play Slider with Hover/Touch Pause ---
     const carouselContainer = document.getElementById('carouselContainer');
     
-    // Start sliding initially
     startAutoPlay();
     updateCarousel();
     window.addEventListener('resize', updateCarousel);
 
-    // Pause when mouse enters or finger touches
+    // Pause slider on hover or touch
     carouselContainer.addEventListener('mouseenter', stopAutoPlay);
     carouselContainer.addEventListener('touchstart', stopAutoPlay);
 
-    // Resume when mouse leaves or finger is removed
+    // Resume slider when mouse leaves or touch ends
     carouselContainer.addEventListener('mouseleave', startAutoPlay);
     carouselContainer.addEventListener('touchend', startAutoPlay);
 
-    // --- 6. Make Gallery Images Clickable for Lightbox ---
-    const cards = document.querySelectorAll('.card');
-    cards.forEach((card, index) => {
-        const img = card.querySelector('img');
-        img.addEventListener('click', () => {
-            openLightbox(index);
-        });
-    });
 });
 
 // --- Image Slider Functions ---
 function startAutoPlay() {
-    // Clear any existing timer first to prevent duplicates
-    stopAutoPlay();
-    autoPlayTimer = setInterval(() => {
-        moveSlide(1); 
-    }, 3000); // Slides every 3 seconds
+    stopAutoPlay(); 
+    autoPlayTimer = setInterval(() => { moveSlide(1); }, 3000); 
 }
 
 function stopAutoPlay() {
@@ -123,11 +110,11 @@ function updateCarousel() {
     track.style.transform = `translateX(-${currentSlideIndex * cardWidth}px)`;
 }
 
-// --- FULLSCREEN LIGHTBOX FUNCTIONS ---
+// --- Lightbox Functions ---
 let currentLightboxIndex = 0;
 
 function openLightbox(index) {
-    stopAutoPlay(); // Pause the background slider
+    stopAutoPlay(); 
     currentLightboxIndex = index;
     
     const cardsList = document.querySelectorAll('.card');
@@ -148,14 +135,13 @@ function openLightbox(index) {
 
 function closeLightbox() {
     document.getElementById('lightbox').style.display = "none";
-    startAutoPlay(); // Resume the background slider when closed
+    startAutoPlay(); 
 }
 
 function changeLightboxImage(direction) {
     const cardsList = document.querySelectorAll('.card');
     currentLightboxIndex += direction;
     
-    // Loop around the lightbox images
     if (currentLightboxIndex >= cardsList.length) {
         currentLightboxIndex = 0;
     } else if (currentLightboxIndex < 0) {
@@ -167,7 +153,7 @@ function changeLightboxImage(direction) {
     document.getElementById('lightbox-caption').innerHTML = targetCard.querySelector('img').alt;
 }
 
-// --- Form Pre-fill & Scroll ---
+// --- Form Pre-fill & WhatsApp ---
 function selectProduct(productName) {
     const productInput = document.getElementById('product');
     productInput.value = productName;
@@ -179,4 +165,4 @@ function selectProduct(productName) {
 function directWhatsApp() {
     const defaultMessage = "Hello Petal & Resin, I would like to inquire about your handcrafted art.";
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(defaultMessage)}`, '_blank');
-        }
+}
