@@ -30,7 +30,7 @@ header {
     transition: background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
 }
 header.scrolled {
-    background: rgba(255, 255, 255, 0.3) !important; 
+    background: rgba(255, 255, 255, 0.4) !important; 
     backdrop-filter: blur(20px) !important; 
     -webkit-backdrop-filter: blur(20px) !important;
     box-shadow: 0 4px 15px rgba(114, 28, 36, 0.08);
