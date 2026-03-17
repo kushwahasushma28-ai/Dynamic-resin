@@ -72,7 +72,7 @@ header:not(.scrolled) .logo, header:not(.scrolled) .menu-icon { color: #fff; tex
 }
 
 /* --- HERO SECTION --- */
-.hero { height: 100vh; background-image: url('https://images.unsplash.com/photo-1596464536761-0775a2f5ff5e?auto=format&fit=crop&q=80&w=1920'); background-size: cover; background-position: center; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding: 0 20px; }
+.hero { height: 100vh; background-image: url('Bg.png'); background-size: cover; background-position: center; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding: 0 20px; }
 .hero-overlay {
     position: absolute; top: 0; left: 0; right: 0; bottom: 0;
     /* Dark romantic rose tint */
