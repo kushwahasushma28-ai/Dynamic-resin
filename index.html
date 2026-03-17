@@ -17,17 +17,17 @@
                 <i class="fa-solid fa-bars"></i>
             </div>
         </div>
-        
-        <nav class="mobile-nav" id="mobile-nav">
-            <div class="close-icon" id="close-icon"><i class="fa-solid fa-xmark"></i></div>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#order">Order</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
     </header>
+
+    <nav class="mobile-nav" id="mobile-nav">
+        <div class="close-icon" id="close-icon"><i class="fa-solid fa-xmark"></i></div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#order">Order</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
     <section id="home" class="hero">
         <div class="hero-overlay"></div>
@@ -47,7 +47,6 @@
         <div class="diamond small"></div><div class="line"></div><div class="diamond large"></div><div class="line"></div><div class="diamond small"></div>
     </div>
 
-    
     <section id="gallery" class="collection-section fade-in-section">
         <p class="section-subtitle">Explore</p>
         <h2 class="section-title">Our Collection</h2>
@@ -59,21 +58,21 @@
                 <div class="carousel-track" id="carouselTrack">
                     
                     <div class="card">
-                        <img src="https://images.unsplash.com/photo-1638203522692-74892c906660?auto=format&fit=crop&q=80&w=600" alt="Rose Resin Tray">
+                        <img src="https://images.unsplash.com/photo-1638203522692-74892c906660?auto=format&fit=crop&q=80&w=600" alt="Rose Resin Tray" onclick="openLightbox(0)">
                         <div class="card-content">
                             <h3>Rose Resin Tray</h3>
                             <button class="btn btn-outline-rose" onclick="selectProduct('Rose Resin Tray')">INQUIRE</button>
                         </div>
                     </div>
                     <div class="card">
-                        <img src="https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&q=80&w=600" alt="Fluid Art Coasters">
+                        <img src="https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&q=80&w=600" alt="Fluid Art Coasters" onclick="openLightbox(1)">
                         <div class="card-content">
                             <h3>Fluid Art Coasters</h3>
                             <button class="btn btn-outline-rose" onclick="selectProduct('Fluid Art Coasters')">INQUIRE</button>
                         </div>
                     </div>
                     <div class="card">
-                        <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&q=80&w=600" alt="Floral Jewelry Dish">
+                        <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&q=80&w=600" alt="Floral Jewelry Dish" onclick="openLightbox(2)">
                         <div class="card-content">
                             <h3>Floral Jewelry Dish</h3>
                             <button class="btn btn-outline-rose" onclick="selectProduct('Floral Jewelry Dish')">INQUIRE</button>
@@ -164,4 +163,4 @@
 
     <script src="script.js"></script>
 </body>
-</html>
+    </html>
