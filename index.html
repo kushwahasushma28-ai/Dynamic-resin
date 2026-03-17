@@ -10,14 +10,18 @@
 </head>
 <body>
 
-    <header>
+    <header id="main-header">
         <div class="header-container">
             <a href="#" class="logo">Petal & Resin</a>
-            <div class="menu-icon" id="menu-icon"><i class="fa-solid fa-bars"></i></div>
+            <div class="menu-icon" id="menu-icon">
+                <i class="fa-solid fa-bars"></i>
+            </div>
         </div>
         
         <nav class="mobile-nav" id="mobile-nav">
-            <div class="close-icon" id="close-icon"><i class="fa-solid fa-xmark"></i></div>
+            <div class="close-icon" id="close-icon">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#gallery">Gallery</a></li>
@@ -37,11 +41,13 @@
                 <a href="#gallery" class="btn btn-outline-light">View Gallery</a>
                 <a href="#order" class="btn btn-primary">Order Now</a>
             </div>
-            <a href="#gallery" class="scroll-down"><i class="fa-solid fa-chevron-down"></i></a>
+            <a href="#gallery" class="scroll-down">
+                <i class="fa-solid fa-chevron-down"></i>
+            </a>
         </div>
     </section>
 
-    <div class="elegant-divider">
+    <div class="elegant-divider fade-in-section">
         <div class="diamond small"></div>
         <div class="line"></div>
         <div class="diamond large"></div>
@@ -49,10 +55,10 @@
         <div class="diamond small"></div>
     </div>
 
-    <section id="gallery" class="collection-section">
+    <section id="gallery" class="collection-section fade-in-section">
         <p class="section-subtitle">Explore</p>
         <h2 class="section-title">Our Collection</h2>
-        <p class="section-desc">Swipe to view our unique blends of nature's finest flowers and handcrafted resin artistry.</p>
+        <p class="section-desc">Swipe or use controls to view our unique blends of nature's finest flowers and handcrafted resin artistry.</p>
 
         <div class="carousel-wrapper">
             <button class="carousel-control prev" onclick="moveSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
@@ -83,7 +89,7 @@
                             <button class="btn btn-outline-rose" onclick="selectProduct('Floral Jewelry Dish')">INQUIRE</button>
                         </div>
                     </div>
-
+                    
                     <div class="card">
                         <img src="https://images.unsplash.com/photo-1542451313056-b7c8e626645f?auto=format&fit=crop&q=80&w=600" alt="Botanical Wall Art">
                         <div class="card-content">
@@ -91,6 +97,7 @@
                             <button class="btn btn-outline-rose" onclick="selectProduct('Botanical Wall Art')">INQUIRE</button>
                         </div>
                     </div>
+
                     </div>
             </div>
 
@@ -98,7 +105,7 @@
         </div>
     </section>
 
-    <div class="elegant-divider">
+    <div class="elegant-divider fade-in-section">
         <div class="diamond small"></div>
         <div class="line"></div>
         <div class="diamond large"></div>
@@ -106,35 +113,35 @@
         <div class="diamond small"></div>
     </div>
 
-    <section id="order" class="order-section">
+    <section id="order" class="order-section fade-in-section">
         <p class="section-subtitle">Let's create</p>
         <h2 class="section-title">Place an Order</h2>
-        <p class="section-desc">Fill in the form below and we'll get back to you, or reach us directly on WhatsApp</p>
+        <p class="section-desc">Fill in the form below or chat with us directly on WhatsApp</p>
         
         <button class="btn btn-whatsapp" onclick="directWhatsApp()"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</button>
 
         <form id="orderForm" class="order-form">
             <div class="form-group">
                 <label for="name">Your Name</label>
-                <input type="text" id="name" placeholder="e.g. Sarah Johnson" required>
+                <input type="text" id="name" placeholder="Sarah Johnson" required>
             </div>
             <div class="form-group">
                 <label for="contact">Email or WhatsApp Number</label>
-                <input type="text" id="contact" placeholder="email@example.com or +1 234 567 8900" required>
+                <input type="text" id="contact" placeholder="sarah.j@example.com" required>
             </div>
             <div class="form-group">
                 <label for="product">Product of Interest</label>
-                <input type="text" id="product" placeholder="e.g. Fluid Art Coasters">
+                <input type="text" id="product" placeholder="e.g., Fluid Art Coasters">
             </div>
             <div class="form-group">
                 <label for="message">Message</label>
-                <textarea id="message" rows="4" placeholder="Tell us about your preferred size, colors..."></textarea>
+                <textarea id="message" rows="4" placeholder="Size, preferred colors, custom requests..."></textarea>
             </div>
             <button type="submit" class="btn btn-primary w-100">Send Inquiry</button>
         </form>
     </section>
 
-    <div class="elegant-divider">
+    <div class="elegant-divider fade-in-section">
         <div class="diamond small"></div>
         <div class="line"></div>
         <div class="diamond large"></div>
@@ -142,7 +149,7 @@
         <div class="diamond small"></div>
     </div>
 
-    <section id="contact" class="contact-section">
+    <section id="contact" class="contact-section fade-in-section">
         <p class="section-subtitle">We'd love to hear from you</p>
         <h2 class="section-title">Get in Touch</h2>
 
@@ -161,7 +168,7 @@
     </section>
 
     <footer>
-        <p class="footer-desc">Custom orders welcome — tell us your vision and we'll bring it to life.</p>
+        <p class="footer-desc">Each piece is handcrafted with love, preserving nature's beauty in resin. Custom orders welcome — tell us your vision and we'll bring it to life.</p>
         <div class="footer-bottom">
             <h2 class="footer-logo">Petal & Resin</h2>
             <p>&copy; 2026 Petal & Resin. All rights reserved.</p>
@@ -170,4 +177,4 @@
 
     <script src="script.js"></script>
 </body>
-                            </html>
+</html>
