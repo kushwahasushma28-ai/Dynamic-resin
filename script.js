@@ -118,39 +118,46 @@ function openLightbox() {
     const lightbox = document.getElementById('lightbox');
     const lightboxGrid = document.getElementById('lightbox-grid');
     
-    // Clear the grid first so images don't duplicate
+    // Clear the grid first
     lightboxGrid.innerHTML = ''; 
 
-    // Find every card so we can get BOTH the image and the title
     const allCards = document.querySelectorAll('.card');
     
-    // Loop through each card and build the grid item
     allCards.forEach(card => {
-        // 1. Grab the image and the title from the website
+        // 1. Grab image and title
         const img = card.querySelector('img');
         const titleText = card.querySelector('h3').innerText;
 
-        // 2. Create a container for this specific artwork
+        // 2. Create container
         const itemDiv = document.createElement('div');
         itemDiv.className = 'lightbox-item';
 
-        // 3. Create the image for the lightbox
+        // 3. Create image
         const newImg = document.createElement('img');
         newImg.src = img.src;
         newImg.alt = img.alt;
 
-        // 4. Create the text label for the lightbox
+        // 4. Create title
         const newTitle = document.createElement('h4');
         newTitle.className = 'lightbox-item-title';
-        newTitle.innerText = titleText; // This automatically pulls the name!
+        newTitle.innerText = titleText;
 
-        // 5. Put the image and title inside the container, then put it in the grid
+        // 5. NEW: Create the "Inquire" button!
+        const inquireBtn = document.createElement('button');
+        inquireBtn.className = 'lightbox-inquire-btn';
+        inquireBtn.innerHTML = 'INQUIRE';
+        inquireBtn.onclick = () => {
+            closeLightbox();           // Close the fullscreen view
+            selectProduct(titleText);  // Pre-fill form and scroll down
+        };
+
+        // 6. Put it all together in the grid
         itemDiv.appendChild(newImg);
         itemDiv.appendChild(newTitle);
+        itemDiv.appendChild(inquireBtn); // Add button to the bottom
         lightboxGrid.appendChild(itemDiv);
     });
 
-    // Show the lightbox
     lightbox.style.display = "block";
 }
 
