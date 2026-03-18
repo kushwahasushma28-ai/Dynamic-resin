@@ -111,46 +111,35 @@ function updateCarousel() {
 }
 
 // --- Lightbox Functions ---
-let currentLightboxIndex = 0;
+// --- FULLSCREEN GRID LIGHTBOX FUNCTIONS ---
 
-function openLightbox(index) {
-    stopAutoPlay(); 
-    currentLightboxIndex = index;
+function openLightbox() {
+    stopAutoPlay(); // Pause the background slider
     
-    const cardsList = document.querySelectorAll('.card');
-    if(cardsList.length === 0) return;
-    
-    const targetCard = cardsList[currentLightboxIndex];
-    const imgSrc = targetCard.querySelector('img').src;
-    const imgAlt = targetCard.querySelector('img').alt;
-
     const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxGrid = document.getElementById('lightbox-grid');
+    
+    // Clear the grid first so images don't duplicate if clicked twice
+    lightboxGrid.innerHTML = ''; 
 
+    // Find every single image inside your carousel cards
+    const allImages = document.querySelectorAll('.card img');
+    
+    // Copy each image and put it into the fullscreen grid
+    allImages.forEach(img => {
+        const newImg = document.createElement('img');
+        newImg.src = img.src;
+        newImg.alt = img.alt;
+        lightboxGrid.appendChild(newImg);
+    });
+
+    // Show the lightbox
     lightbox.style.display = "block";
-    lightboxImg.src = imgSrc;
-    lightboxCaption.innerHTML = imgAlt;
 }
 
 function closeLightbox() {
     document.getElementById('lightbox').style.display = "none";
-    startAutoPlay(); 
-}
-
-function changeLightboxImage(direction) {
-    const cardsList = document.querySelectorAll('.card');
-    currentLightboxIndex += direction;
-    
-    if (currentLightboxIndex >= cardsList.length) {
-        currentLightboxIndex = 0;
-    } else if (currentLightboxIndex < 0) {
-        currentLightboxIndex = cardsList.length - 1;
-    }
-    
-    const targetCard = cardsList[currentLightboxIndex];
-    document.getElementById('lightbox-img').src = targetCard.querySelector('img').src;
-    document.getElementById('lightbox-caption').innerHTML = targetCard.querySelector('img').alt;
+    startAutoPlay(); // Resume the background slider
 }
 
 // --- Form Pre-fill & WhatsApp ---
