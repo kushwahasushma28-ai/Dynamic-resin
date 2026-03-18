@@ -145,25 +145,47 @@ header.scrolled {
     color: var(--rose-accent); 
 }
 
-/* The Grid Layout */
+/* The Grid Layout
+
+/* The Grid Layout & Items */
 .lightbox-grid {
     display: grid;
-    /* Automatically creates columns that are at least 280px wide */
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
+    gap: 30px; /* Slightly more gap to make room for text */
     padding: 20px 5%;
     max-width: 1400px;
     margin: 0 auto 60px;
 }
 
-.lightbox-grid img {
+.lightbox-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: zoomIn 0.4s;
+}
+
+.lightbox-item img {
     width: 100%;
     height: 300px;
     object-fit: cover;
     border-radius: 8px;
     border: 1px solid rgba(255,255,255,0.1);
-    animation: zoomIn 0.4s;
     transition: transform 0.3s;
+}
+
+.lightbox-item img:hover {
+    transform: scale(1.03);
+}
+
+/* New styling for the product name in the lightbox */
+.lightbox-item-title {
+    color: #fdf8f5; /* Soft blush color */
+    margin-top: 15px;
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-align: center;
 }
 
 .lightbox-grid img:hover {
