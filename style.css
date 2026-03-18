@@ -106,17 +106,74 @@ header.scrolled {
 .carousel-control { background: transparent; color: var(--dark-rose); border: none; font-size: 2rem; cursor: pointer; padding: 10px; z-index: 10; transition: transform 0.2s; }
 .carousel-control:hover { transform: scale(1.2); }
 
-/* --- FULLSCREEN LIGHTBOX --- */
-.lightbox { display: none; position: fixed; z-index: 2000; padding-top: 60px; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden; background-color: rgba(0,0,0,0.9); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
-.lightbox-content { margin: auto; display: block; max-width: 90%; max-height: 75vh; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); animation: zoomIn 0.3s; object-fit: contain; }
-#lightbox-caption { margin: auto; display: block; width: 80%; max-width: 700px; text-align: center; color: #fdf8f5; padding: 15px 0; font-family: var(--font-serif); font-size: 1.5rem; animation: zoomIn 0.3s; }
-.lightbox-close { position: absolute; top: 15px; right: 30px; color: #f1f1f1; font-size: 40px; font-weight: bold; transition: 0.3s; cursor: pointer; z-index: 2005; }
-.lightbox-close:hover, .lightbox-close:focus { color: var(--rose-accent); text-decoration: none; cursor: pointer; }
-.lightbox-prev, .lightbox-next { cursor: pointer; position: absolute; top: 50%; width: auto; padding: 16px; margin-top: -50px; color: white; font-weight: bold; font-size: 24px; transition: 0.3s ease; border-radius: 3px; user-select: none; -webkit-user-select: none; background: rgba(0,0,0,0.4); border: none; z-index: 2001; }
-.lightbox-next { right: 20px; }
-.lightbox-prev { left: 20px; }
-.lightbox-prev:hover, .lightbox-next:hover { background-color: var(--dark-rose); }
-@keyframes zoomIn { from {transform:scale(0.95); opacity: 0;} to {transform:scale(1); opacity: 1;} }
+/* --- FULLSCREEN SCROLLABLE GRID LIGHTBOX --- */
+.lightbox { 
+    display: none; 
+    position: fixed; 
+    z-index: 2000; 
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    overflow-y: auto; /* Allows the user to scroll down */
+    background-color: rgba(0,0,0,0.95); 
+    backdrop-filter: blur(8px); 
+    -webkit-backdrop-filter: blur(8px); 
+}
+
+.lightbox-header {
+    text-align: center;
+    color: var(--rose-accent);
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    padding: 40px 20px 20px;
+}
+
+.lightbox-close { 
+    position: fixed; /* Keeps the X button at the top right even when scrolling */
+    top: 15px; 
+    right: 30px; 
+    color: #f1f1f1; 
+    font-size: 40px; 
+    font-weight: bold; 
+    transition: 0.3s; 
+    cursor: pointer; 
+    z-index: 2005; 
+}
+
+.lightbox-close:hover { 
+    color: var(--rose-accent); 
+}
+
+/* The Grid Layout */
+.lightbox-grid {
+    display: grid;
+    /* Automatically creates columns that are at least 280px wide */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px 5%;
+    max-width: 1400px;
+    margin: 0 auto 60px;
+}
+
+.lightbox-grid img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.1);
+    animation: zoomIn 0.4s;
+    transition: transform 0.3s;
+}
+
+.lightbox-grid img:hover {
+    transform: scale(1.03);
+}
+
+@keyframes zoomIn { 
+    from {transform:scale(0.95); opacity: 0;} 
+    to {transform:scale(1); opacity: 1;} 
+}
 
 /* --- FORMS --- */
 .order-section, .contact-section { padding: 20px; overflow: hidden; } 
