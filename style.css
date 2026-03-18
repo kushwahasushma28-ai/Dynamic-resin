@@ -30,9 +30,9 @@ header {
     transition: background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
 }
 header.scrolled {
-    background: rgba(255, 255, 255, 0.3) !important; 
-    backdrop-filter: blur(20px) !important; 
-    -webkit-backdrop-filter: blur(20px) !important;
+    background: rgba(255, 255, 255, 0.5) !important; 
+    backdrop-filter: blur(30px) !important; 
+    -webkit-backdrop-filter: blur(30px) !important;
     box-shadow: 0 4px 15px rgba(114, 28, 36, 0.08);
     border-bottom: 1px solid rgba(255,255,255,0.2);
 }
@@ -58,7 +58,7 @@ header.scrolled {
 .slide-in-left.is-visible, .slide-in-right.is-visible { opacity: 1; transform: translateX(0); }
 
 /* --- HERO SECTION --- */
-.hero { margin-top: 70px; height: calc(100vh - 70px); background-image: url('Hero.png'); background-size: cover; background-position: center; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding: 0 20px; }
+.hero { margin-top: 70px; height: calc(100vh - 70px); background-image: url('Bg.png'); background-size: cover; background-position: center; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding: 0 20px; }
 .hero-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(60, 15, 20, 0.7) 100%); }
 .hero-content { position: relative; z-index: 1; }
 .hero .subtitle { font-size: 1.2rem; color: #fdf8f5; margin-bottom: 10px; }
