@@ -112,25 +112,42 @@ function updateCarousel() {
 
 // --- Lightbox Functions ---
 // --- FULLSCREEN GRID LIGHTBOX FUNCTIONS ---
-
 function openLightbox() {
     stopAutoPlay(); // Pause the background slider
     
     const lightbox = document.getElementById('lightbox');
     const lightboxGrid = document.getElementById('lightbox-grid');
     
-    // Clear the grid first so images don't duplicate if clicked twice
+    // Clear the grid first so images don't duplicate
     lightboxGrid.innerHTML = ''; 
 
-    // Find every single image inside your carousel cards
-    const allImages = document.querySelectorAll('.card img');
+    // Find every card so we can get BOTH the image and the title
+    const allCards = document.querySelectorAll('.card');
     
-    // Copy each image and put it into the fullscreen grid
-    allImages.forEach(img => {
+    // Loop through each card and build the grid item
+    allCards.forEach(card => {
+        // 1. Grab the image and the title from the website
+        const img = card.querySelector('img');
+        const titleText = card.querySelector('h3').innerText;
+
+        // 2. Create a container for this specific artwork
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'lightbox-item';
+
+        // 3. Create the image for the lightbox
         const newImg = document.createElement('img');
         newImg.src = img.src;
         newImg.alt = img.alt;
-        lightboxGrid.appendChild(newImg);
+
+        // 4. Create the text label for the lightbox
+        const newTitle = document.createElement('h4');
+        newTitle.className = 'lightbox-item-title';
+        newTitle.innerText = titleText; // This automatically pulls the name!
+
+        // 5. Put the image and title inside the container, then put it in the grid
+        itemDiv.appendChild(newImg);
+        itemDiv.appendChild(newTitle);
+        lightboxGrid.appendChild(itemDiv);
     });
 
     // Show the lightbox
