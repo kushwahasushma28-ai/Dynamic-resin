@@ -191,6 +191,28 @@ header.scrolled {
 .lightbox-grid img:hover {
     transform: scale(1.03);
 }
+/* Styling for the new Inquire button inside the Lightbox */
+.lightbox-inquire-btn {
+    margin-top: 12px;
+    border: 1px solid var(--rose-accent);
+    color: var(--rose-accent);
+    background: transparent;
+    padding: 8px 24px;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: var(--font-sans);
+}
+
+.lightbox-inquire-btn:hover {
+    background: var(--rose-accent);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(165, 74, 84, 0.3);
+}
 
 @keyframes zoomIn { 
     from {transform:scale(0.95); opacity: 0;} 
